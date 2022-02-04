@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import Error from './Error';
 
 const Formulario = () => {
 
     const [ termino, guardarTermino ] = useState('');
+    const [error, guardarError] = useState(false);
 
     const buscarImagenes = e => {
         e.preventDefault();
 
         // validar 
-        if(termino.trim() === '') {  
+        if (termino.trim() === '') {
+            guardarError(true);
             return;
         }
+
+        guardarError(false);
 
         // enviar el termino de busqueda al componente principal
     }
@@ -37,6 +42,8 @@ const Formulario = () => {
                     />
                 </div>
             </div>
+
+            {error ? <Error mensaje="Agrega un término de búsqueda" /> : null}
 
         </form>
         );
