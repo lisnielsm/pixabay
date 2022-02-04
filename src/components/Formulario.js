@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import Error from './Error';
+import PropTypes from 'prop-types';
 
-const Formulario = ({ guardarBusqueda }) => {
+const Formulario = ({guardarBusqueda}) => {
 
     const [ termino, guardarTermino ] = useState('');
-    const [error, guardarError] = useState(false);
+    const [ error, guardarError ] = useState(false);
 
     const buscarImagenes = e => {
         e.preventDefault();
 
         // validar 
-        if (termino.trim() === '') {
-            guardarError(true);
+        if(termino.trim() === '') {
+            guardarError(true);   
             return;
         }
 
@@ -44,10 +45,14 @@ const Formulario = ({ guardarBusqueda }) => {
                 </div>
             </div>
 
-            {error ? <Error mensaje="Agrega un término de búsqueda" /> : null}
+            { error ? <Error mensaje="Agrega un término de búsqueda" /> : null}
 
         </form>
         );
+}
+
+Formulario.propTypes = {
+    guardarBusqueda: PropTypes.func.isRequired
 }
  
 export default Formulario;
