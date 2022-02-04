@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Formulario from './components/Formulario';
+import ListadoImagenes from './components/ListadoImagenes';
 
 function App() {
 
@@ -29,6 +30,12 @@ function App() {
 
         <Formulario
           guardarBusqueda={guardarBusqueda}
+        />
+      </div>
+
+      <div className="row justify-content-center">
+        <ListadoImagenes
+          imagenes={imagenes}
         />
       </div>
 
